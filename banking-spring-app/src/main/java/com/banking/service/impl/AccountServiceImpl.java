@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 @Service
 public class AccountServiceImpl implements AccountService {
 
-    private AccountRepository accountRepository;
+    private final AccountRepository accountRepository;
 
     public AccountServiceImpl(AccountRepository accountRepository) {
         this.accountRepository = accountRepository;
@@ -55,7 +55,7 @@ public class AccountServiceImpl implements AccountService {
                 .findById(id)
                 .orElseThrow(() -> new RuntimeException("Account does not exists"));
 
-        if(account.getBalance() < amount){
+        if (account.getBalance() < amount) {
             throw new RuntimeException("Insufficient amount");
         }
 
